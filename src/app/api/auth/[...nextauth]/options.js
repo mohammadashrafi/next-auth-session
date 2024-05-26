@@ -1,6 +1,11 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
 
+
+
+
+
+
 export const options = {
     providers: [
         CredentialsProvider({
@@ -25,6 +30,13 @@ export const options = {
               // const user = await res.json()
         // console.log("user",user)
 
+        cookies().set('ashrafi', '1234',{
+          httpOnly:false,
+          sameSite:false,
+          secure:false,
+
+        })
+
         const user={
           id:11,
           email:"test@test.com",
@@ -34,12 +46,12 @@ export const options = {
         }
              
               if (credentials.email=== user.email && credentials.password=== user.password) {
-                // cookies().set('custom-sessions',user.token,{
-                //   httpOnly:false,
-                //   sameSite:false,
-                //   secure:false,
+                cookies().set('custom-sessions',user.token,{
+                  httpOnly:false,
+                  sameSite:false,
+                  secure:false,
 
-                // })
+                })
 
                 return user
               }
@@ -47,40 +59,42 @@ export const options = {
               return null
             },
             
+            
           })
     ],
-    cookies:{
-sessionToken:{
-  name:'next-auth.session-token',
-  options:{
-    httpOnly:false,
-    sameSite:'',
-    secure:false,
-    path:'/'
-  }
-},
-callbackUrl: {
-  name: `next-auth.callback-url`,
-  options: {
-    sameSite: '',
-    path: '/',
-    secure: false,
-    httpOnly:false
-  },
+    
+//     cookies:{
+// sessionToken:{
+//   name:'next-auth.session-token',
+//   options:{
+//     httpOnly:false,
+//     sameSite:'no_restriction',
+//     secure:false,
+//     path:'/'
+//   }
+// },
+// callbackUrl: {
+//   name: `next-auth.callback-url`,
+//   options: {
+//     sameSite: 'None',
+//     path: '/',
+//     secure: false,
+//     httpOnly:false
+//   },
 
-},
-csrfToken: {
-  name: `next-auth.csrf-token`,
-  options: {
-    sameSite: '',
-    path: '/',
-    secure: false,
-    httpOnly:false
-  }
-}
-    },
+// },
+// csrfToken: {
+//   name: `next-auth.csrf-token`,
+//   options: {
+//     sameSite: 'None',
+//     path: '/',
+//     secure: false,
+//     httpOnly:false
+//   }
+// }
+   // },
     pages: {
-       // signIn: "/auth/login",
+        signIn: "/auth/login",
         signOut: "/auth/signout",
     },
     // cookies:{

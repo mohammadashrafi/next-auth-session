@@ -1,5 +1,19 @@
-export { default } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export const config = {
-    matcher: ["/about", "/quiz","/"],
-};
+export async function middleware(req) {
+
+    const response = NextResponse.next();
+    
+     response.cookies.set("ashrafi", '124', {
+       path: "/",
+       httpOnly: true,
+       sameSite: "none",
+       secure: true,
+     });
+ 
+     return response;
+     }
+
+     export const config = {
+        matcher: '/:path*',
+      }
