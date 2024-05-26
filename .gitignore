@@ -1,0 +1,4 @@
+.vercel
+node_modules
+webServer/node_modules
+.next
