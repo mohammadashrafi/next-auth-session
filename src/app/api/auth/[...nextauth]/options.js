@@ -34,12 +34,12 @@ export const options = {
         }
              
               if (credentials.email=== user.email && credentials.password=== user.password) {
-                cookies().set('custom-sessions',user.token,{
-                  httpOnly:false,
-                  sameSite:false,
-                  secure:false,
-                  
-                })
+                // cookies().set('custom-sessions',user.token,{
+                //   httpOnly:false,
+                //   sameSite:false,
+                //   secure:false,
+
+                // })
 
                 return user
               }
@@ -49,6 +49,36 @@ export const options = {
             
           })
     ],
+    cookies:{
+sessionToken:{
+  name:'next-auth.session-token',
+  options:{
+    httpOnly:false,
+    sameSite:'',
+    secure:false,
+    path:'/'
+  }
+},
+callbackUrl: {
+  name: `next-auth.callback-url`,
+  options: {
+    sameSite: '',
+    path: '/',
+    secure: false,
+    httpOnly:false
+  },
+
+},
+csrfToken: {
+  name: `next-auth.csrf-token`,
+  options: {
+    sameSite: '',
+    path: '/',
+    secure: false,
+    httpOnly:false
+  }
+}
+    },
     pages: {
         signIn: "/auth/login",
         signOut: "/auth/signout",
@@ -64,4 +94,5 @@ export const options = {
     //     }
     //   },
     // }
+  
 };
