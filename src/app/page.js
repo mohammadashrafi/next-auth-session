@@ -4,7 +4,7 @@ import Postmes from "../components/postMessegeComponent/postmes";
 export default function Home() {
     return (
         <main className="container mx-auto">
-            <Postmes/>
+            
             <div className="text-center">
                 <h1 className="text-3xl mt-10 mb-10 text-center">
                     اپلیکیشن Quiz
@@ -18,6 +18,7 @@ export default function Home() {
                     </button>
                 </Link>
             </div>
+            <Postmes/>
         </main>
     );
 }

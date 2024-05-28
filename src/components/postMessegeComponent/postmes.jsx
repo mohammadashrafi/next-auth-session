@@ -21,7 +21,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <h3>{JSON.stringify(getmessage)}</h3>
+      <h1 className='text-center mt-5'>{ getmessage && JSON.stringify(getmessage)}</h1>
     </div>
   )
 }
