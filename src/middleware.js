@@ -6,10 +6,9 @@ export async function middleware(req) {
     
      response.cookies.set("ashrafi", '124', {
        path: "/",
-       httpOnly: false,
        sameSite: "none",
-       secure: false,
-       domain:"http://localhost:3002"
+       secure: true,
+      
       
      });
  
