@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Postmes from "../components/postMessegeComponent/postmes";
+import RequestStorage from "../components/requestStorage";
 
 export default function Home() {
     return (
@@ -18,7 +19,9 @@ export default function Home() {
                     </button>
                 </Link>
             </div>
-            <Postmes/>
+            {/* <Postmes/> */}
+            <RequestStorage/>
+
         </main>
     );
 }
