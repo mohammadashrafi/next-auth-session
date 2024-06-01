@@ -2,47 +2,84 @@
 import { useState, useEffect } from 'react';
 
 const StorageAccessExample = () => {
-  const [permissionStatus, setPermissionStatus] = useState(null);
+  const [cookieAccess, setCookieAccess] = useState(false);
+  const [storageType, setStorageType] = useState('cookie');
+  const [inIframe, setInIframe] = useState(false);
 
   useEffect(() => {
-    // Check the current permission status for storage access
-    window.navigator.permissions.query({ name: 'storage-access' })
-      .then((permissionStatus) => {
-        setPermissionStatus(permissionStatus);
-        console.log('Storage permission status:', permissionStatus.state);
-      })
-      .catch((error) => {
-        console.error('Error checking storage permission:', error);
-      });
+    // Check if the content is loaded in an iframe
+    setInIframe(window.self !== window.top);
+
+    // Check if we can access cookies or localStorage
+    checkStorageAccess();
   }, []);
 
-  const requestStorageAccess = () => {
-    // Request storage access
-    
-    window.navigator.permissions.requestPermission({ name: 'storage-access' })
-      .then((permissionStatus) => {
-        setPermissionStatus(permissionStatus);
-        if (permissionStatus === 'granted') {
-          // Permission granted, you can now access cookies and other storage
-          console.log('Storage access granted!');
-          console.log(document.cookie); // Access cookies
-        } else {
-          // Permission denied or revoked
-          console.error('Storage access denied');
-        }
-      })
-      .catch((error) => {
-        console.error('Error requesting storage access:', error);
-      });
+  const checkStorageAccess = () => {
+    try {
+      // Try to read a test cookie
+      const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)test_cookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      setCookieAccess(cookieValue !== '');
+      setStorageType('cookie');
+    } catch (error) {
+      // If we can't access cookies, try using localStorage
+      try {
+        // Try to access localStorage
+        localStorage.setItem('test_key', 'test_value');
+        localStorage.getItem('test_key');
+        setCookieAccess(true);
+        setStorageType('localStorage');
+      } catch (error) {
+        // If we can't access localStorage, set access to false
+        setCookieAccess(false);
+        setStorageType('none');
+      }
+    }
+  };
+
+  const requestAccess = () => {
+    if (inIframe) {
+      requestLocalStorageAccess();
+    } else {
+      requestCookieAccess();
+    }
+  };
+
+  const requestCookieAccess = () => {
+    try {
+      // Try to set a test cookie
+      document.cookie = 'test_cookie=test_value; path=/';
+      checkStorageAccess();
+      console.log('Cookie access granted!');
+      console.log(document.cookie); // Access cookies
+    } catch (error) {
+      // If we can't set a cookie, log an error
+      console.error('Error requesting cookie access:', error);
+      setCookieAccess(false);
+    }
+  };
+
+  const requestLocalStorageAccess = () => {
+    try {
+      // Try to access localStorage
+      localStorage.setItem('test_key', 'test_value');
+      localStorage.getItem('test_key');
+      setCookieAccess(true);
+      console.log('localStorage access granted!');
+    } catch (error) {
+      // If we can't access localStorage, log an error
+      console.error('Error requesting localStorage access:', error);
+      setCookieAccess(false);
+    }
   };
 
   return (
     <div>
       <h1>Storage Access Example</h1>
-      {permissionStatus && (
-        <p>Current storage permission status: {permissionStatus.state}</p>
+      {cookieAccess ? (
+        <p>Access granted using {storageType}!</p>
+      ) : (
+        <button className='bg-red-600 p-5 text-white' onClick={requestAccess}>Request Storage Access</button>
       )}
-      <button onClick={requestStorageAccess}>Request Storage Access</button>
     </div>
   );
 };

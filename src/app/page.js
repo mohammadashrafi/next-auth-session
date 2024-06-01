@@ -21,8 +21,8 @@ export default function Home() {
                 </Link>
             </div>
             {/* <Postmes/> */}
-            <RequestStorage/>
-            {/* <StorageAccessExample/> */}
+            {/* <RequestStorage/> */}
+            <StorageAccessExample/>
 
         </main>
     );
