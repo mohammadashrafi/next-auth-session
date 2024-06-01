@@ -4,6 +4,7 @@ import React from 'react'
 const RequestStorage =() => {
 
 const handelClick= async()=>{
+  console.log("has access",document.hasStorageAccess())
 console.log("start")
 console.log("navigator.appCodeName",navigator.appCodeName)
 
@@ -33,8 +34,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
   // API is available, proceed with the request
  
- 
- 
+ if(document.hasStorageAccess()){
   navigator.storage.requestStorageAccess()
   .then(() => {
     // Access granted, you can now read/write cookies
@@ -44,6 +44,11 @@ console.log("navigator.appCodeName",navigator.appCodeName)
     // Access denied or an error occurred
     console.error('Error requesting storage access:', error);
   });
+ }else{
+  console.log("not has access")
+ }
+ 
+
 
 
 }
