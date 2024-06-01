@@ -7,6 +7,7 @@ const IFrameCookieExample = () => {
   useEffect(() => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     console.log("isSafari",isSafari)
+    console.log(" document.referrer", document.referrer)
     // Check if the content is loaded in an iframe
     if (window.self !== window.top) {
       // Get the parent document URL
