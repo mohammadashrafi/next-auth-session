@@ -30,20 +30,21 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 //     // Don't do anything if the permission was denied.
 //   });
 
-if (navigator.storage && navigator.storage.requestStorageAccess) {
+
   // API is available, proceed with the request
+ 
+ 
+ 
   navigator.storage.requestStorageAccess()
   .then(() => {
     // Access granted, you can now read/write cookies
-    console.log(document.cookie);
+    console.log("document.cookie",document.cookie);
   })
   .catch((error) => {
     // Access denied or an error occurred
     console.error('Error requesting storage access:', error);
   });
-} else {
-  // API is not available, handle the fallback
-}
+
 
 }
 
