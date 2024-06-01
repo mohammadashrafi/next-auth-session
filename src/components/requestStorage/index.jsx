@@ -38,13 +38,65 @@ console.log("navigator.appCodeName",navigator.appCodeName)
   // API is available, proceed with the request
 
 
-  navigator.permissions.query({ name: 'cookies' })
-  .then((permissionStatus) => {
-    console.log('Cookies permission status:', permissionStatus.state);
-  })
-  .catch((error) => {
-    console.error('Error checking cookies permission:', error);
-  });
+
+
+
+// navigator.permissions.query({ name: 'storage-access' })
+//   .then((permissionStatus) => {
+//     console.log('Storage permission status:', permissionStatus.state);
+
+//     // If the permission is not granted, request access
+//     if (permissionStatus.state !== 'granted') {
+//       // Request storage access
+//       navigator.permissions.request({ name: 'storage-access' })
+//         .then((permissionStatus) => {
+//           if (permissionStatus.state === 'granted') {
+//             // Permission granted, you can now access cookies and other storage
+//             console.log('Storage access granted!');
+//             console.log(document.cookie); // Access cookies
+//           } else {
+//             // Permission denied or revoked
+//             console.error('Storage access denied');
+//           }
+//         })
+//         .catch((error) => {
+//           console.error('Error requesting storage access:', error);
+//         });
+//     } else {
+//       // Permission already granted, you can access cookies and other storage
+//       console.log('Storage access already granted');
+//       console.log(document.cookie); // Access cookies
+//     }
+//   })
+//   .catch((error) => {
+//     console.error('Error checking storage permission:', error);
+//   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

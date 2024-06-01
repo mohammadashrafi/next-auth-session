@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Postmes from "../components/postMessegeComponent/postmes";
 import RequestStorage from "../components/requestStorage";
+import StorageAccessExample from "../components/requestStorage/RequestPageTwo";
 
 export default function Home() {
     return (
@@ -20,7 +21,8 @@ export default function Home() {
                 </Link>
             </div>
             {/* <Postmes/> */}
-            <RequestStorage/>
+            {/* <RequestStorage/> */}
+            <StorageAccessExample/>
 
         </main>
     );
