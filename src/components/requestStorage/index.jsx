@@ -41,92 +41,100 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
 
 
-// navigator.permissions.query({ name: 'storage-access' })
-//   .then((permissionStatus) => {
-//     console.log('Storage permission status:', permissionStatus.state);
+navigator.permissions.query({ name: 'storage-access' })
+  .then((permissionStatus) => {
+    console.log('Storage permission status:', permissionStatus.state);
 
-//     // If the permission is not granted, request access
-//     if (permissionStatus.state !== 'granted') {
-//       // Request storage access
-//       navigator.permissions.request({ name: 'storage-access' })
-//         .then((permissionStatus) => {
-//           if (permissionStatus.state === 'granted') {
-//             // Permission granted, you can now access cookies and other storage
-//             console.log('Storage access granted!');
-//             console.log(document.cookie); // Access cookies
-//           } else {
-//             // Permission denied or revoked
-//             console.error('Storage access denied');
-//           }
-//         })
-//         .catch((error) => {
-//           console.error('Error requesting storage access:', error);
-//         });
-//     } else {
-//       // Permission already granted, you can access cookies and other storage
-//       console.log('Storage access already granted');
-//       console.log(document.cookie); // Access cookies
-//     }
-//   })
-//   .catch((error) => {
-//     console.error('Error checking storage permission:', error);
-//   });
+    // If the permission is not granted, request access
+    if (permissionStatus.state !== 'granted') {
+      // Request storage access
+      navigator.permissions.request({ name: 'storage-access' })
+        .then((permissionStatus) => {
+          if (permissionStatus.state === 'granted') {
+            // Permission granted, you can now access cookies and other storage
+            console.log('Storage access granted!');
+            console.log(document.cookie); // Access cookies
 
 
-
-
-
-
-
-
-
-
-
-
+            promise.then(
+              function (hasAccess) {
+                console.log("hasssss",hasAccess)
+                // Boolean hasAccess says whether the document has access or not.
+                if(hasAccess){
+                  
+                  document.requestStorageAccess()
+                  .then(() => {
+                    // Access granted, you can now read/write cookies
+                    console.log("document.cookie",document.cookie);
+                  })
+                  .catch((error) => {
+                    // Access denied or an error occurred
+                    console.error('Error requesting storage access:', error);
+                  });
+                }else{
+                  console.log("not access to has access")
+                }
+           
+              },
+              function (reason) {
+                console.log("Promise was rejected for some reason" + reason)
+                // Promise was rejected for some reason.
+              }
+            );
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  promise.then(
-    function (hasAccess) {
-      console.log("hasssss",hasAccess)
-      // Boolean hasAccess says whether the document has access or not.
-      if(hasAccess){
-        
-        document.requestStorageAccess()
-        .then(() => {
-          // Access granted, you can now read/write cookies
-          console.log("document.cookie",document.cookie);
+          } else {
+            // Permission denied or revoked
+            console.error('Storage access denied');
+          }
         })
         .catch((error) => {
-          // Access denied or an error occurred
           console.error('Error requesting storage access:', error);
         });
-      }else{
-        console.log("not access to has access")
-      }
- 
-    },
-    function (reason) {
-      console.log("Promise was rejected for some reason" + reason)
-      // Promise was rejected for some reason.
+    } else {
+      // Permission already granted, you can access cookies and other storage
+      console.log('Storage access already granted');
+      console.log(document.cookie); // Access cookies
     }
-  );
+  })
+  .catch((error) => {
+    console.error('Error checking storage permission:', error);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
