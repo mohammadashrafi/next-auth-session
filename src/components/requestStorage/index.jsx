@@ -39,6 +39,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
   promise.then(
     function (hasAccess) {
+      console.log("hasssss",hasAccess)
       // Boolean hasAccess says whether the document has access or not.
       if(hasAccess){
         
