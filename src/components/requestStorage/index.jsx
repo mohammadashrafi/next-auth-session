@@ -48,7 +48,7 @@ navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
 
 const handelaccessstorage=() => {
 
-console.log("localstorage",window.localStorage.getItem("test")) 
+console.log("localstorage",window.parent.document.body.style.backgroundColor = "red") 
 
 }
 
