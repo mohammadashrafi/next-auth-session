@@ -65,7 +65,7 @@ console.log("parentCookies",parentCookies);
 
   return (
     <div>
-      <button className='m-auto bg-red-500 p-5' onClick={handelClick}>access storage</button>
+      <button className='m-auto bg-red-500 p-5' onClick={handelClick}>storage</button>
 <br />
       <button className='m-auto bg-green-500 p-5' onClick={handelaccessstorage}>access localstorage</button>
     </div>
