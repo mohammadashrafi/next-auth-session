@@ -47,8 +47,16 @@ navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
 }
 
 const handelaccessstorage=() => {
+  
+// Get the parent window's document object
+const parentDoc = window.parent.document;
 
-console.log("localstorage",window.parent.document.body.style.backgroundColor = "red") 
+// Access the parent window's cookies
+const parentCookies = parentDoc.cookie;
+
+// Do something with the parent cookies
+console.log("parentCookies",parentCookies);
+
 
 }
 
