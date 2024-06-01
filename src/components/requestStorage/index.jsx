@@ -41,7 +41,8 @@ console.log("navigator.appCodeName",navigator.appCodeName)
     function (hasAccess) {
       // Boolean hasAccess says whether the document has access or not.
       if(hasAccess){
-        navigator.storage.requestStorageAccess()
+        
+        document.requestStorageAccess()
         .then(() => {
           // Access granted, you can now read/write cookies
           console.log("document.cookie",document.cookie);
