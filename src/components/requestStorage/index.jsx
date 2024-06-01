@@ -4,9 +4,12 @@ import React from 'react'
 const RequestStorage =() => {
 
 const handelClick= async()=>{
-  console.log("has access",document.hasStorageAccess())
+  var promise = document.hasStorageAccess();
+
 console.log("start")
 console.log("navigator.appCodeName",navigator.appCodeName)
+
+
 
 // navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
 //     if (result.state === "granted") {
@@ -33,20 +36,34 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
 
   // API is available, proceed with the request
+
+  promise.then(
+    function (hasAccess) {
+      // Boolean hasAccess says whether the document has access or not.
+      if(hasAccess){
+        navigator.storage.requestStorageAccess()
+        .then(() => {
+          // Access granted, you can now read/write cookies
+          console.log("document.cookie",document.cookie);
+        })
+        .catch((error) => {
+          // Access denied or an error occurred
+          console.error('Error requesting storage access:', error);
+        });
+      }else{
+        console.log("not access to has access")
+      }
  
- if(document.hasStorageAccess()){
-  navigator.storage.requestStorageAccess()
-  .then(() => {
-    // Access granted, you can now read/write cookies
-    console.log("document.cookie",document.cookie);
-  })
-  .catch((error) => {
-    // Access denied or an error occurred
-    console.error('Error requesting storage access:', error);
-  });
- }else{
-  console.log("not has access")
- }
+    },
+    function (reason) {
+      console.log("Promise was rejected for some reason" + reason)
+      // Promise was rejected for some reason.
+    }
+  );
+
+
+
+ 
  
 
 
