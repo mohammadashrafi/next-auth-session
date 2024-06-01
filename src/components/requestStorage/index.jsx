@@ -4,7 +4,7 @@ import React from 'react'
 const RequestStorage =() => {
 
 const handelClick= async()=>{
-if (!navigator) return
+console.log("start")
 console.log("navigator.appCodeName",navigator.appCodeName)
 
 // navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
@@ -64,7 +64,7 @@ console.log("parentCookies",parentCookies);
 
   return (
     <div>
-      <button className='m-auto bg-red-500 p-5' onClick={handelClick}>click access storage</button>
+      <button className='m-auto bg-red-500 p-5' onClick={handelClick}>access storage</button>
 <br />
       <button className='m-auto bg-green-500 p-5' onClick={handelaccessstorage}>access localstorage</button>
     </div>
