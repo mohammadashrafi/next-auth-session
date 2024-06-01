@@ -6,7 +6,7 @@ const StorageAccessExample = () => {
 
   useEffect(() => {
     // Check the current permission status for storage access
-    navigator.permissions.query({ name: 'storage-access' })
+    window.navigator.permissions.query({ name: 'storage-access' })
       .then((permissionStatus) => {
         setPermissionStatus(permissionStatus);
         console.log('Storage permission status:', permissionStatus.state);
@@ -18,10 +18,11 @@ const StorageAccessExample = () => {
 
   const requestStorageAccess = () => {
     // Request storage access
-    navigator.permissions.request({ name: 'storage-access' })
+    
+    window.navigator.permissions.requestPermission({ name: 'storage-access' })
       .then((permissionStatus) => {
         setPermissionStatus(permissionStatus);
-        if (permissionStatus.state === 'granted') {
+        if (permissionStatus === 'granted') {
           // Permission granted, you can now access cookies and other storage
           console.log('Storage access granted!');
           console.log(document.cookie); // Access cookies
@@ -41,7 +42,7 @@ const StorageAccessExample = () => {
       {permissionStatus && (
         <p>Current storage permission status: {permissionStatus.state}</p>
       )}
-      <button onClick={requestStorageAccess} className='m-auto bg-green-500 p-5'>Request Storage Access</button>
+      <button onClick={requestStorageAccess}>Request Storage Access</button>
     </div>
   );
 };
