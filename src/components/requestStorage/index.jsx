@@ -106,7 +106,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
     function (hasAccess) {
       console.log("hasssss",hasAccess)
       // Boolean hasAccess says whether the document has access or not.
-      if(!hasAccess){
+      if(hasAccess){
         
         document.requestStorageAccess()
         .then(() => {
@@ -118,7 +118,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
           console.error('Error requesting storage access:', error);
         });
       }else{
-        console.log(" has access")
+        console.log("not access to has access")
       }
  
     },
@@ -154,7 +154,6 @@ console.log("parentCookies",parentCookies);
 
   return (
     <div>
-      <h1>hi</h1>
       <button className='m-auto bg-red-500 p-5' onClick={handelClick}>storage</button>
 <br />
       <button className='m-auto bg-green-500 p-5' onClick={handelaccessstorage}>access localstorage</button>
