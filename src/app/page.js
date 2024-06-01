@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Postmes from "../components/postMessegeComponent/postmes";
 import RequestStorage from "../components/requestStorage";
-import StorageAccessExample from "../components/requestStorage/RequestPageTwo";
+import IFrameCookieExample from "../components/requestStorage/RequestPageTwo";
 
 export default function Home() {
     return (
@@ -22,7 +22,7 @@ export default function Home() {
             </div>
             {/* <Postmes/> */}
             {/* <RequestStorage/> */}
-            <StorageAccessExample/>
+            <IFrameCookieExample/>
 
         </main>
     );
