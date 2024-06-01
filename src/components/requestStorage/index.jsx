@@ -46,12 +46,18 @@ navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
 
 }
 
+const handelaccessstorage=() => {
 
+console.log("localstorage",window.localStorage.getItem("test")) 
+
+}
 
 
   return (
     <div>
       <button className='m-auto bg-red-500 p-5' onClick={handelClick}>click access storage</button>
+<br />
+      <button className='m-auto bg-green-500 p-5' onClick={handelaccessstorage}>access localstorage</button>
     </div>
   )
 }
