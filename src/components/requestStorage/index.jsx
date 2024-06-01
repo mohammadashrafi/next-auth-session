@@ -37,6 +37,19 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
   // API is available, proceed with the request
 
+
+  navigator.permissions.query({ name: 'cookies' })
+  .then((permissionStatus) => {
+    console.log('Cookies permission status:', permissionStatus.state);
+  })
+  .catch((error) => {
+    console.error('Error checking cookies permission:', error);
+  });
+
+
+
+
+
   promise.then(
     function (hasAccess) {
       console.log("hasssss",hasAccess)
