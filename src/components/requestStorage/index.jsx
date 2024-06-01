@@ -106,7 +106,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
     function (hasAccess) {
       console.log("hasssss",hasAccess)
       // Boolean hasAccess says whether the document has access or not.
-      if(hasAccess){
+      if(!hasAccess){
         
         document.requestStorageAccess()
         .then(() => {
@@ -118,7 +118,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
           console.error('Error requesting storage access:', error);
         });
       }else{
-        console.log("not access to has access")
+        console.log(" has access")
       }
  
     },
