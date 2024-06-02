@@ -2,8 +2,6 @@ import "@/src/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import localFont from "next/font/local";
-import AuthProvider from "./AuthProvider";
-import { cookies } from "next/headers";
 
 const vazir = localFont({
     src: "../assets/Vazir.woff2",
@@ -19,7 +17,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="fa-IR" dir="rtl" className={vazir.className}>
             <body>
-                <AuthProvider>{children}</AuthProvider>
+              {children}
             </body>
         </html>
     );
