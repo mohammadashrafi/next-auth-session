@@ -16,6 +16,17 @@ const nextConfig = {
             },
         ],
     },
+
+    async redirects() {
+        return [
+          {
+            source: '/redirect',
+            destination: 'http://localhost:3009',
+            permanent: false,
+            basePath: false
+          },
+        ]
+      },
 };
 
 module.exports = nextConfig;
