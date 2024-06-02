@@ -1,21 +1,16 @@
 "use client";
 import { useState } from "react";
-
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-
 import { quiz } from "@/src/data";
 import { Answers, Buttons, Result } from "@/src/components/quiz";
-import UserCard from "@/src/components/card/UserCard";
+
 
 export default function Quiz() {
-    const { data: session } = useSession({
-        required: true,
-        onUnauthenticated() {
-            redirect("/api/auth/signin?callbackUrl=/quiz");
-        },
-    });
+    // const { data: session } = useSession({
+    //     required: true,
+    //     onUnauthenticated() {
+    //         redirect("/api/auth/signin?callbackUrl=/quiz");
+    //     },
+    // });
 
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -72,7 +67,7 @@ export default function Quiz() {
 
     return (
         <>
-            {session?.user ? (
+            {/* {session?.user ? (
                 <>
                     <UserCard user={session?.user} />
                     <div className="w-full text-center">
@@ -84,7 +79,7 @@ export default function Quiz() {
                         </Link>
                     </div>
                 </>
-            ) : null}
+            ) : null} */}
             <h1 className="text-center">صفحه آزمون</h1>
             <br />
             <div className="bg-gray-50 dark:bg-gray-800 shadow-lg dark:shadow-dark rounded mx-auto w-7/12">
