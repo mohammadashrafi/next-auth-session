@@ -8,7 +8,7 @@ useEffect(()=>{
         "message",
         (event) => {
             console.log("main event: " + event)
-          if (event.origin !== "http://localhost:5173") return;
+          if (event.origin !== "http://localhost:3009") return;
       setMessage(event.data)
       console.log("event data", event.data)
           // …
