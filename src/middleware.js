@@ -15,6 +15,6 @@ export async function middleware(req) {
      return response;
      }
 
-     export const config = {
-        matcher: '/:path*',
-      }
+    //  export const config = {
+    //     matcher: '/:path*',
+    //   }
