@@ -1,6 +1,5 @@
 "use client";
 
-import  signoutfunc  from "@/src/components/signout";
 import { signOut } from "next-auth/react";
 
 export default function SignOutButton() {

@@ -1,9 +1,8 @@
-import {getServerSession} from "next-auth/next"
-import { options } from "../api/auth/[...nextauth]/options";
+
+
 export default async function About() {
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const session = await getServerSession(options);
-    console.log("Session: " + session)
+   
+
    
 
     return (
