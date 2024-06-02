@@ -21,7 +21,7 @@ export default function Home() {
                     </button>
                 </Link>
             </div>
-            {/* <Postmes/> */}
+            <Postmes/>
             {/* <RequestStorage/> */}
             <IFrameCookieExample/>
            
