@@ -22,7 +22,7 @@ export default function Home() {
                 </Link>
             </div>
             <Postmes/>
-            <RequestStorage/>
+            {/* <RequestStorage/> */}
             {/* <IFrameCookieExample/> */}
            
 
