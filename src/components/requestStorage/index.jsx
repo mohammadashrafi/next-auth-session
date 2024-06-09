@@ -8,7 +8,9 @@ const handelClick= async()=>{
 console.log("start")
 console.log("navigator.appCodeName",navigator.appCodeName)
 
-
+document.requestStorageAccess().then(hasAccess => {
+  console.log({hasAccess});
+});
 
 navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
   console.log({result});
