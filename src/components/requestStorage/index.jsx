@@ -133,12 +133,13 @@ const RequestStorage =() => {
 
 const handelaccessstorage=() => {
   
-// Get the parent window's document object
-const parentDoc = window.parent.document;
-
+  // Get the parent window's document object
+  const parentDoc = window.parent.document;
+  
+  console.log("parentDoc"+parentDoc)
 // Access the parent window's cookies
 const parentCookies = parentDoc.cookie;
-
+console.log("parentCookies"+parentCookies)
 // Do something with the parent cookies
 console.log("parentCookies",parentCookies);
 
