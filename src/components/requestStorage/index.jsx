@@ -2,40 +2,62 @@
 import React from 'react'
 const RequestStorage =() => {
 
-const handelClick= async()=>{
 
 
-console.log("start")
-console.log("navigator.appCodeName",navigator.appCodeName)
 
-document.requestStorageAccess().then(hasAccess => {
-  console.log({hasAccess});
-});
+    
 
-navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
-  console.log({result});
-    if (result.state === "granted") {
-        try {
-            console.log("Cookie access allowed. Calling requestStorageAccess()");
-            await document.requestStorageAccess();
-            console.log("Cookie access granted");
-            return true;
-          } catch (error) {
-            console.log('error', error);
-            // This shouldn't really fail if access is granted
-            return false;
-          }
-     
-    } else if (result.state === "prompt") {
-        console.log("Cookie access requires a prompt");
-        return false
-   
-    }else if (result.state ==="denied"){
-        console.log("Cookie access denied");
-        return false;
+
+
+
+ const handelClick= async()=>{
+
+
+  document.hasStorageAccess().then(hasAccess => {
+    console.log('hasAccess: ' + hasAccess);
+    if (!hasAccess) {
+      return document.requestStorageAccess();
     }
-    // Don't do anything if the permission was denied.
+  }).then(_ => {
+    console.log('Now we have first-party storage access!');
+    document.cookie = "foo=bar";
+    console.log(`document.cookie: ${document.cookie}`);
+  }).catch(_ => {
+    console.log('error');
   });
+
+
+// console.log("start")
+// console.log("navigator.appCodeName",navigator.appCodeName)
+
+// document.requestStorageAccess().then(hasAccess => {
+//   console.log({hasAccess});
+// });
+
+// navigator.permissions.query({ name: "" }).then(async (result) => {
+//   console.log({result});
+//     if (result.state === "granted") {
+//         try {
+//             console.log("Cookie access allowed. Calling requestStorageAccess()");
+//             await document.requestStorageAccess();
+//             console.log("Cookie access granted");
+//             return true;
+//           } catch (error) {
+//             console.log('error', error);
+//             // This shouldn't really fail if access is granted
+//             return false;
+//           }
+     
+//     } else if (result.state === "prompt") {
+//         console.log("Cookie access requires a prompt");
+//         return false
+   
+//     }else if (result.state ==="denied"){
+//         console.log("Cookie access denied");
+//         return false;
+//     }
+//     // Don't do anything if the permission was denied.
+//   });
 
 
   // API is available, proceed with the request
