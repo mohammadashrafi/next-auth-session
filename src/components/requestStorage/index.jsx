@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-
 const RequestStorage =() => {
 
 const handelClick= async()=>{
@@ -12,6 +11,7 @@ console.log("navigator.appCodeName",navigator.appCodeName)
 
 
 navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
+  console.log({result});
     if (result.state === "granted") {
         try {
             console.log("Cookie access allowed. Calling requestStorageAccess()");
@@ -19,6 +19,7 @@ navigator.permissions.query({ name: "storage-access" }).then(async (result) => {
             console.log("Cookie access granted");
             return true;
           } catch (error) {
+            console.log('error', error);
             // This shouldn't really fail if access is granted
             return false;
           }
