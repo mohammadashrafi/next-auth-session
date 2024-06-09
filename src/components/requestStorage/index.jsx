@@ -3,7 +3,7 @@ import React from 'react'
 const RequestStorage =() => {
 
 const handelClick= async()=>{
-  var promise = document.hasStorageAccess();
+
 
 console.log("start")
 console.log("navigator.appCodeName",navigator.appCodeName)
