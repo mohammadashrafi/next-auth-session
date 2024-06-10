@@ -8,7 +8,7 @@ useEffect(()=>{
         "message",
         (event) => {
             console.log("main event: " + event)
-          if (event.origin !== "http://localhost:3009") return;
+          if (event.origin !== "https://storageaccess.netlify.app") return;
       setMessage(event.data)
       console.log("event data", event.data)
           // …
