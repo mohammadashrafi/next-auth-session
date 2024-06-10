@@ -253,6 +253,16 @@ const secondaccess=()=>{
         rSAFor();
    
     } else if (permission.state === "denied") {
+      document.requestStorageAccess().then(
+        () => {
+            // Access is granted
+            console.log('Storage access granted');
+        },
+        () => {
+            // Access is denied
+            console.log('Storage access denied');
+        }
+    );
       // User has denied third-party cookie access, so we'll
       // need to do something else
     }
@@ -278,6 +288,16 @@ const costumCookie=()=>{
    
     } else if (permission.state === "denied") {
       console.log("Permission denied custom func")
+      document.requestStorageAccess().then(
+        () => {
+            // Access is granted
+            console.log('Storage access granted');
+        },
+        () => {
+            // Access is denied
+            console.log('Storage access denied');
+        }
+    );
       // User has denied third-party cookie access, so we'll
       // need to do something else
     }
