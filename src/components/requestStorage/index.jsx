@@ -5,7 +5,7 @@ const RequestStorage =() => {
 
 
   function doThingsWithCookies() {
-    document.cookie = "mammmmmmad=1234"; // set a cookie
+    // document.cookie = "mammmmmmad=1234"; // set a cookie
     console.log("document.cookie",document.cookie)
   }
   
@@ -219,6 +219,7 @@ console.log("parentCookies",parentCookies);
 
 
 function rSAFor() {
+
   if ("requestStorageAccessFor" in document) {
     document.requestStorageAccessFor("https://storageaccess.netlify.app").then(
       (res) => {
@@ -259,8 +260,28 @@ const secondaccess=()=>{
 }
 
 
-const thirdaccess=()=>{
-
+const costumCookie=()=>{
+  navigator.permissions
+  .query({
+    name: "top-level-storage-access",
+    requestedOrigin: "https://storageaccess.netlify.app/",
+  }).then((permission) => {
+    if (permission.state === "granted") {
+      // Permission has already been granted
+      // No need to call requestStorageAccessFor() again, just start using cookies
+      doThingsWithCookies();
+    } else if (permission.state === "prompt") {
+      // Need to call requestStorageAccessFor() after a user interaction
+    
+        // Request storage access
+        rSAFor();
+   
+    } else if (permission.state === "denied") {
+      console.log("Permission denied custom func")
+      // User has denied third-party cookie access, so we'll
+      // need to do something else
+    }
+  });
 }
 
 
@@ -276,6 +297,7 @@ const thirdaccess=()=>{
 
       <button className='m-auto bg-red-500 p-5 my-5' onClick={secondaccess}>access cookie 2</button>
 
+    <button className='m-auto bg-green-500 p-5 my-5' onClick={costumCookie}>costumCookie</button>
 
       
     </div>
